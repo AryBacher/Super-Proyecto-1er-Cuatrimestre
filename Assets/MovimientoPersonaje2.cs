@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-
 public class MovimientoPersonaje2 : MonoBehaviour
 {
     // Start is called before the first frame update
@@ -33,14 +32,14 @@ public class MovimientoPersonaje2 : MonoBehaviour
         {
             transform.Rotate(0, -3, 0);
         }
-    }
 
-    void OnCollisionEnter(Collision col)
-    {
-        if (col.gameObject.name == "DeathWall")
+        void OnCollisionEnter(Collision col)
         {
-            transform.position = new Vector3(0, 0.5f, -13.5f);
-            transform.eulerAngles = new Vector3(0, 0, 0);
+            if (col.gameObject.name == "DeathWall")
+            {
+                transform.position = new Vector3(0, 0.5f, -13.5f);
+                transform.eulerAngles = new Vector3(0, 0, 0);
+            }
         }
     }
 }
