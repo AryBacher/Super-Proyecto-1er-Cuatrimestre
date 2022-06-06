@@ -7,7 +7,7 @@ public class MovimientoPersonaje2 : MonoBehaviour
 
     bool HasJump;
     Rigidbody rb;
-    float jumpForce = 5;
+    float jumpForce = 5; 
 
     // Start is called before the first frame update
     void Start()
@@ -63,6 +63,11 @@ public class MovimientoPersonaje2 : MonoBehaviour
         if (col.gameObject.name == "Piso" || col.gameObject.name == "Agua")
         {
             HasJump = true;
+        }
+
+        if (col.gameObject.name == "Boton")
+        {
+            
         }
     }
 }
