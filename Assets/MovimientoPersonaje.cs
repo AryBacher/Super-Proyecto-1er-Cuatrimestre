@@ -42,6 +42,7 @@ public class MovimientoPersonaje : MonoBehaviour
         {
             transform.Rotate(0, -3, 0);
         }
+
         if (Input.GetKeyDown(KeyCode.Space) && HasJump)
         {
             rb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
@@ -53,18 +54,18 @@ public class MovimientoPersonaje : MonoBehaviour
     void OnCollisionEnter(Collision col)
     {
        if (col.gameObject.name == "DeathWall")
-        {
+       {
             transform.position = new Vector3(4.5f, 0.5f, -13.5f);
             transform.eulerAngles = new Vector3(0,0,0);
-        }
+       }
 
-       if (col.gameObject.name == "Water")
-        {
+       if (col.gameObject.name == "Agua")
+       {
             transform.position = new Vector3(4.5f, 0.5f, -13.5f);
             transform.eulerAngles = new Vector3(0, 0, 0);
-        }
+       }
 
-        if (col.gameObject.name == "Piso")
+        if (col.gameObject.name == "Piso" || col.gameObject.name == "Fuego")
         {
                 HasJump = true;
         }
