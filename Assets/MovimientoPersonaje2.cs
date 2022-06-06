@@ -7,7 +7,8 @@ public class MovimientoPersonaje2 : MonoBehaviour
 
     bool HasJump;
     Rigidbody rb;
-    float jumpForce = 5; 
+    float jumpForce = 5;
+    public GameObject objeto;
 
     // Start is called before the first frame update
     void Start()
@@ -67,7 +68,7 @@ public class MovimientoPersonaje2 : MonoBehaviour
 
         if (col.gameObject.name == "Boton")
         {
-            
+            objeto.SetActive(true);
         }
     }
 }

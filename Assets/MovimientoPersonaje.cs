@@ -67,7 +67,7 @@ public class MovimientoPersonaje : MonoBehaviour
 
         if (col.gameObject.name == "Piso" || col.gameObject.name == "Fuego")
         {
-                HasJump = true;
+            HasJump = true;
         }
     }
 }
