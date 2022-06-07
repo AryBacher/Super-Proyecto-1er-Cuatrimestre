@@ -15,6 +15,7 @@ public class MovimientoPersonaje2 : MonoBehaviour
     {
         HasJump = true;
         rb = GetComponent<Rigidbody>();
+
     }
 
     // Update is called once per frame

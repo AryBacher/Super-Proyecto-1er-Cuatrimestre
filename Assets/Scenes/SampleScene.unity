@@ -859,6 +859,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1157804117}
   - component: {fileID: 1157804116}
+  - component: {fileID: 1157804118}
   m_Layer: 0
   m_Name: '[AparecePiso]'
   m_TagString: Untagged
@@ -878,8 +879,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d0b3f6f37eef1494694b39def615a9e9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ObjectToClone: {fileID: 4962369422191718125, guid: 79e36790519d9564eb5605fb786b29a9,
-    type: 3}
+  ObjectToClone: {fileID: 1543675142}
 --- !u!4 &1157804117
 Transform:
   m_ObjectHideFlags: 0
@@ -894,6 +894,19 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 12
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1157804118
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1157804115}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d3d3ef3920d77ce438ab59d5b2990542, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  objeto: {fileID: 1543675142}
 --- !u!1 &1170850701
 GameObject:
   m_ObjectHideFlags: 0
@@ -1015,7 +1028,7 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 0
+  m_Constraints: 80
   m_CollisionDetection: 0
 --- !u!1 &1428125794
 GameObject:
@@ -1401,7 +1414,7 @@ CapsuleCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  m_Radius: 0.5000001
+  m_Radius: 0
   m_Height: 2
   m_Direction: 1
   m_Center: {x: 0.000000059604645, y: 0, z: -0.00000008940697}
@@ -1458,8 +1471,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1948292949}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -11.7, y: 0.38, z: 28.25}
-  m_LocalScale: {x: 1, y: 0.15596487, z: 1}
+  m_LocalPosition: {x: -11.7, y: 0.51, z: 28.25}
+  m_LocalScale: {x: 1, y: 0.016751232, z: 1.0000005}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 10
