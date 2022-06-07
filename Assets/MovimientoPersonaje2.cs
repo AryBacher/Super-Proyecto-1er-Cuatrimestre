@@ -9,6 +9,7 @@ public class MovimientoPersonaje2 : MonoBehaviour
     Rigidbody rb;
     float jumpForce = 5;
     public GameObject objeto;
+    public GameObject victoria;
 
     // Start is called before the first frame update
     void Start()
@@ -56,13 +57,13 @@ public class MovimientoPersonaje2 : MonoBehaviour
             transform.eulerAngles = new Vector3(0, 0, 0);
         }
 
-        if (col.gameObject.name == "Fuego")
+        if (col.gameObject.name == "Fuego" || col.gameObject.name == "FuegoGanar")
         {
             transform.position = new Vector3(4.5f, 0.5f, -13.5f);
             transform.eulerAngles = new Vector3(0, 0, 0);
         }
 
-        if (col.gameObject.name == "Piso" || col.gameObject.name == "Agua")
+        if (col.gameObject.name == "Piso" || col.gameObject.name == "Agua" || col.gameObject.name == "Invisible Agua" || col.gameObject.name == "Invisible Fuego")
         {
             HasJump = true;
         }
@@ -70,6 +71,11 @@ public class MovimientoPersonaje2 : MonoBehaviour
         if (col.gameObject.name == "Boton")
         {
             objeto.SetActive(true);
+        }
+
+        if (col.gameObject.name == "AguaGanar")
+        {
+            victoria.SetActive(true);
         }
     }
 }
