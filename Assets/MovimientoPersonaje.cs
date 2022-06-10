@@ -67,7 +67,7 @@ public class MovimientoPersonaje : MonoBehaviour
 
     void OnCollisionEnter(Collision col)
     {
-       if (col.gameObject.name == "DeathWall" || col.gameObject.name == "Agua" || col.gameObject.name == "AguaGanar" || col.gameObject.name == "EsferaKiller")
+        if (col.gameObject.name == "DeathWall" || col.gameObject.name == "Agua" || col.gameObject.name == "AguaGanar" || col.gameObject.tag == "Jero")
        {
             transform.position = new Vector3(4.5f, 0.5f, -13.5f);
             transform.eulerAngles = new Vector3(0,0,0);
@@ -86,6 +86,8 @@ public class MovimientoPersonaje : MonoBehaviour
         if (col.gameObject.name == "FuegoGanar")
         {
             victoria.SetActive(true);
+            Task.Delay(5000);
+            victoria.SetActive(false);
         }
 
         if (col.gameObject.name == "Piso2" || col.gameObject.name == "Piso3")
@@ -96,13 +98,20 @@ public class MovimientoPersonaje : MonoBehaviour
             //rb.constraints = RigidbodyConstraints.None;
         }
 
+        else
+        {
+            rb.constraints = RigidbodyConstraints.None;
+            rb.constraints = RigidbodyConstraints.FreezePositionX;
+            rb.constraints = RigidbodyConstraints.FreezePositionZ;
+        }
+
         if (col.gameObject.name == "Piso3")
         {
             Task.Delay(1500);
             for (int i = 0; i <= ary; i++)
             {
                 ObjectToClone.transform.position = new Vector3(ary2, 84, 235);
-                //ary2 = guido2.Next(-13, 13);
+                ary2 = guido2.Next(-13, 13);
                 Instantiate(ObjectToClone);
             }
 
