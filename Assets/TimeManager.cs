@@ -19,8 +19,8 @@ public class TimeManager : MonoBehaviour
     {
         float time = Time.time;
 
-        txt_timeTime.text = "Tiempo Transucrrido: " +time.ToString();
-        txt_timeTime.text = "Tiempo Transucrrido: " +Mathf.Floor(time).ToString();
+        //txt_timeTime.text = "Tiempo Transcurrido: " +time.ToString() + " Segundos";
+        txt_timeTime.text = "Tiempo Transcurrido: " +Mathf.Floor(time).ToString() + " Segundos";
         customTime += Time.deltaTime;
     }
 }

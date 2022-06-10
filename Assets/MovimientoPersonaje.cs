@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using System.Threading.Tasks;
+using System;
 
 public class MovimientoPersonaje : MonoBehaviour
 {
@@ -12,11 +13,21 @@ public class MovimientoPersonaje : MonoBehaviour
     public GameObject objeto;
     public GameObject victoria;
 
+    public GameObject ObjectToClone;
+    System.Random guido = new System.Random();
+    int ary;
+
+    System.Random guido2 = new System.Random();
+    int ary2;
+
     // Start is called before the first frame update
     void Start()
     {
         HasJump = true;
         rb = GetComponent<Rigidbody>();
+
+        ary = guido.Next(1, 6);
+        ary2 = guido2.Next(-13, 13);
     }
 
     // Update is called once per frame
@@ -56,19 +67,13 @@ public class MovimientoPersonaje : MonoBehaviour
 
     void OnCollisionEnter(Collision col)
     {
-       if (col.gameObject.name == "DeathWall")
+       if (col.gameObject.name == "DeathWall" || col.gameObject.name == "Agua" || col.gameObject.name == "AguaGanar" || col.gameObject.name == "EsferaKiller")
        {
             transform.position = new Vector3(4.5f, 0.5f, -13.5f);
             transform.eulerAngles = new Vector3(0,0,0);
        }
 
-       if (col.gameObject.name == "Agua" || col.gameObject.name == "AguaGanar")
-       {
-            transform.position = new Vector3(4.5f, 0.5f, -13.5f);
-            transform.eulerAngles = new Vector3(0, 0, 0);
-       }
-
-        if (col.gameObject.name == "Piso" || col.gameObject.name == "Fuego" || col.gameObject.name == "Invisible Agua" || col.gameObject.name == "Invisible Fuego" || col.gameObject.name == "PisoDeLaMuerte")
+        if (col.gameObject.name == "Piso" || col.gameObject.name == "Fuego" || col.gameObject.name == "InvisibleAgua" || col.gameObject.name == "InvisibleFuego" || col.gameObject.name == "Boton" || col.gameObject.name == "Piso2" || col.gameObject.name == "Piso3" || col.gameObject.name == "PisoGanador")
         {
             HasJump = true;
         }
@@ -81,6 +86,28 @@ public class MovimientoPersonaje : MonoBehaviour
         if (col.gameObject.name == "FuegoGanar")
         {
             victoria.SetActive(true);
+        }
+
+        if (col.gameObject.name == "Piso2" || col.gameObject.name == "Piso3")
+        {
+            rb.constraints = RigidbodyConstraints.FreezePositionX;
+            rb.constraints = RigidbodyConstraints.FreezePositionY;
+            rb.constraints = RigidbodyConstraints.FreezePositionZ;
+            //rb.constraints = RigidbodyConstraints.None;
+        }
+
+        if (col.gameObject.name == "Piso3")
+        {
+            Task.Delay(1500);
+            for (int i = 0; i <= ary; i++)
+            {
+                ObjectToClone.transform.position = new Vector3(ary2, 84, 235);
+                //ary2 = guido2.Next(-13, 13);
+                Instantiate(ObjectToClone);
+            }
+
+            ary = guido.Next(1, 6);
+            ary2 = guido2.Next(-13, 13);
         }
     }
 }

@@ -1,6 +1,9 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+using System.Threading.Tasks;
+using System;
 
 public class MovimientoPersonaje2 : MonoBehaviour
 {
@@ -11,12 +14,21 @@ public class MovimientoPersonaje2 : MonoBehaviour
     public GameObject objeto;
     public GameObject victoria;
 
+    public GameObject ObjectToClone;
+    System.Random guido = new System.Random();
+    int ary;
+
+    System.Random guido2 = new System.Random();
+    int ary2;
+
     // Start is called before the first frame update
     void Start()
     {
         HasJump = true;
         rb = GetComponent<Rigidbody>();
 
+        ary = guido.Next(1, 6);
+        ary2 = guido2.Next(-13, 13);
     }
 
     // Update is called once per frame
@@ -51,19 +63,13 @@ public class MovimientoPersonaje2 : MonoBehaviour
 
     void OnCollisionEnter(Collision col)
     {
-        if (col.gameObject.name == "DeathWall")
+        if (col.gameObject.name == "DeathWall" || col.gameObject.name == "Fuego" || col.gameObject.name == "FuegoGanar" || col.gameObject.name == "EsferaKiller")
         {
             transform.position = new Vector3(0, 0.5f, -13.5f);
             transform.eulerAngles = new Vector3(0, 0, 0);
         }
 
-        if (col.gameObject.name == "Fuego" || col.gameObject.name == "FuegoGanar")
-        {
-            transform.position = new Vector3(4.5f, 0.5f, -13.5f);
-            transform.eulerAngles = new Vector3(0, 0, 0);
-        }
-
-        if (col.gameObject.name == "Piso" || col.gameObject.name == "Agua" || col.gameObject.name == "Invisible Agua" || col.gameObject.name == "Invisible Fuego")
+        if (col.gameObject.name == "Piso" || col.gameObject.name == "Agua" || col.gameObject.name == "InvisibleAgua" || col.gameObject.name == "InvisibleFuego" || col.gameObject.name == "Boton" || col.gameObject.name == "Piso2" || col.gameObject.name == "Piso3")
         {
             HasJump = true;
         }
@@ -76,6 +82,34 @@ public class MovimientoPersonaje2 : MonoBehaviour
         if (col.gameObject.name == "AguaGanar")
         {
             victoria.SetActive(true);
+        }
+
+        if (col.gameObject.name == "Piso2" || col.gameObject.name == "Piso3")
+        {
+            rb.constraints = RigidbodyConstraints.FreezePositionX;
+            rb.constraints = RigidbodyConstraints.FreezePositionY;
+            rb.constraints = RigidbodyConstraints.FreezePositionZ;
+            //rb.constraints = RigidbodyConstraints.None;
+        }
+
+        else
+        {
+            rb.constraints = RigidbodyConstraints.None;
+            rb.constraints = RigidbodyConstraints.FreezePositionX;
+            rb.constraints = RigidbodyConstraints.FreezePositionZ;
+        }
+
+        if (col.gameObject.name == "Piso3")
+        {
+            Task.Delay(1500);
+            for (int i = 0; i <= ary; i++)
+            {
+                ObjectToClone.transform.position = new Vector3(ary2, 84, 235);
+                Instantiate(ObjectToClone);
+            }
+
+            ary = guido.Next(1, 6);
+            ary2 = guido2.Next(-13, 13);
         }
     }
 }
