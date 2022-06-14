@@ -91,14 +91,14 @@ public class MovimientoPersonaje2 : MonoBehaviour
             rb.constraints = RigidbodyConstraints.FreezePositionX;
             rb.constraints = RigidbodyConstraints.FreezePositionY;
             rb.constraints = RigidbodyConstraints.FreezePositionZ;
-            //rb.constraints = RigidbodyConstraints.None;
         }
 
         else
         {
-            rb.constraints = RigidbodyConstraints.None;
-            rb.constraints = RigidbodyConstraints.FreezePositionX;
-            rb.constraints = RigidbodyConstraints.FreezePositionZ;
+            rb.constraints = RigidbodyConstraints.FreezeRotation;
+            /*rb.constraints = RigidbodyConstraints.FreezeRotationX;
+            rb.constraints = RigidbodyConstraints.FreezeRotationY;
+            rb.constraints = RigidbodyConstraints.FreezeRotationZ;*/
         }
 
         if (col.gameObject.name == "Piso3")
