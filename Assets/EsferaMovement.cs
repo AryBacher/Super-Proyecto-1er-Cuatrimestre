@@ -14,7 +14,7 @@ public class EsferaMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (transform.position.z <= 100)
+        if (transform.position.z <= 100 || transform.position.y <= -10)
         {
             Destroy(gameObject);
         }
