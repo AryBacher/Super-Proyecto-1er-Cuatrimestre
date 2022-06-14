@@ -82,6 +82,8 @@ public class MovimientoPersonaje2 : MonoBehaviour
         if (col.gameObject.name == "AguaGanar")
         {
             victoria.SetActive(true);
+            Task.Delay(5000);
+            victoria.SetActive(false);
         }
 
         if (col.gameObject.name == "Piso2" || col.gameObject.name == "Piso3")
